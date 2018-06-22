@@ -1,0 +1,226 @@
+$font: Verdana,Arial,'微軟正黑體';
+$fontSize: 14px;
+$fontSize-s: 12px;
+
+$fontColor: #666;
+$fontColor-w: #999;
+$fontColor-s: #ff8e26;
+$fontColor-g: #24a07c;
+
+$bgColor: #eaedf2;
+$bgColor-light: #f1f1f1;
+
+$borderColor: #e2e2e2;
+
+$change-bg: #f7f7f7;
+
+$active-border: #fe8b88;
+$active-bg: #fff9e3;
+
+$colHeight: 50px;
+
+@mixin pc() {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin colWidth($col){
+    min-width: percentage(1/$col);
+    @include pc(){
+        min-width: percentage(1/7);
+    } 
+}
+
+.textR{
+    text-align: right;
+    padding-right: 5px;
+    line-height: initial;
+}
+
+.textL{
+    text-align: left;
+    padding-left: 5px;
+    line-height: initial;
+}
+.content{
+    font-family: $font;
+    font-size: $fontSize;
+    color: $fontColor;
+    margin: auto;   
+
+    @include pc(){
+        max-width: 710px;
+        margin-top: 20px;
+    }
+
+    .year{
+        position: relative;
+        &::before{
+            content: '2018';
+            display: block;
+            color: $fontColor-g;
+            font-size: $fontSize-s;
+            position: absolute;
+            right: 0;
+            top: -30px;
+            line-height: $colHeight;
+        }
+    }
+
+    .cheapest{
+        position: relative;
+        &::before{
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 20px 20px 0 0;
+            border-color: #ff8026 transparent transparent transparent;            
+            position: absolute;
+            left: -1px;
+            top: 0;
+        }
+        &::after{
+            content: '最便宜';
+            display: block;
+            font-size: $fontSize-s;
+            color: $fontColor-s;
+            position: absolute;
+            top: 0;
+            left: 23px;
+            line-height: initial;
+
+        }
+    }
+
+    .col{
+        height: $colHeight;
+        line-height: $colHeight + 10px;
+        border-left: 1px solid $borderColor;
+        border-bottom: 1px solid $borderColor; 
+    }        
+    .tr{
+        &:first-child{
+        border-top: 1px solid $borderColor;
+        }
+
+        >.date:first-child{
+            background-color: $bgColor-light;
+        }
+
+        .td{
+            &:nth-child(2){
+                border-right: 1px solid $borderColor;
+            }
+        }
+        &.title{
+            background-color: $bgColor;
+            >.date{
+                background-color: $bgColor;
+                padding-top: 6px;
+            }
+        }
+    }
+
+    .date{
+        text-align: center;
+    }
+}
+
+.frzTable{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    
+    .frzTitle{
+        pointer-events: none;
+    }
+
+    .frzActive{
+        background-color: $active-bg;
+        border-left: 1px solid $active-border;
+        border-bottom: 1px solid $active-border;
+        border-top: 0.1px solid $active-border;
+        position: relative;
+        & +.frzTable-cols{
+            border-left: 1px solid $active-border;
+        }
+    }
+
+    .frzChange{
+        background-color: $change-bg;
+    }
+
+    .frzTable-tr{
+        display: flex;
+        .td:first-child{
+            width: 88px;
+        }    
+
+    }
+    .frzTable-wrap{
+        width: calc(100% - 88px);
+        overflow: hidden;
+
+    }
+    .frzTable-slider{
+        display: flex;
+        transform: translateX(0);
+        transition-property: transform;
+        transition-duration: 0.5s;
+    }
+
+    .frzTable-cols{
+        text-align: center;
+        &.frzTable-col1{
+            @include colWidth(1); 
+        }         
+        &.frzTable-col2{
+            @include colWidth(2); ;
+        }         
+        &.frzTable-col3{
+            @include colWidth(3);          
+        }        
+        &.frzTable-col4{
+           @include colWidth(4);
+            line-height: initial;
+            padding-top: 10px; 
+           @include pc(){
+                padding-top: 0;
+                line-height: $colHeight + 10px;
+           } 
+
+        }
+        
+    }
+
+    .frzTable-arrow{
+        @include pc(){
+            display: none;
+        }
+        div{
+           width: 20px;
+           height: 40px;
+           color: #fff;
+           background: rgba(#000,0.3);
+           text-align: center;
+           line-height: 40px;
+        }
+        .frzTable-nextArrow{
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -20px;
+        } 
+        .frzTable-preArrow{
+            display: none;
+            position: absolute;
+            left: 88px;            
+            top: 50%;
+            margin-top: -20px;
+        } 
+    }
+}

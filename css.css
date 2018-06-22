@@ -1,0 +1,163 @@
+@charset "UTF-8";
+.textR {
+  text-align: right;
+  padding-right: 5px;
+  line-height: initial; }
+
+.textL {
+  text-align: left;
+  padding-left: 5px;
+  line-height: initial; }
+
+.content {
+  font-family: Verdana, Arial, "微軟正黑體";
+  font-size: 14px;
+  color: #666;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .content {
+      max-width: 710px;
+      margin-top: 20px; } }
+  .content .year {
+    position: relative; }
+    .content .year::before {
+      content: '2018';
+      display: block;
+      color: #24a07c;
+      font-size: 12px;
+      position: absolute;
+      right: 0;
+      top: -30px;
+      line-height: 50px; }
+  .content .cheapest {
+    position: relative; }
+    .content .cheapest::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 20px 0 0;
+      border-color: #ff8026 transparent transparent transparent;
+      position: absolute;
+      left: -1px;
+      top: 0; }
+    .content .cheapest::after {
+      content: '最便宜';
+      display: block;
+      font-size: 12px;
+      color: #ff8e26;
+      position: absolute;
+      top: 0;
+      left: 23px;
+      line-height: initial; }
+  .content .col {
+    height: 50px;
+    line-height: 60px;
+    border-left: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2; }
+  .content .tr:first-child {
+    border-top: 1px solid #e2e2e2; }
+  .content .tr > .date:first-child {
+    background-color: #f1f1f1; }
+  .content .tr .td:nth-child(2) {
+    border-right: 1px solid #e2e2e2; }
+  .content .tr.title {
+    background-color: #eaedf2; }
+    .content .tr.title > .date {
+      background-color: #eaedf2;
+      padding-top: 6px; }
+  .content .date {
+    text-align: center; }
+
+.frzTable {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative; }
+  .frzTable .frzTitle {
+    pointer-events: none; }
+  .frzTable .frzActive {
+    background-color: #fff9e3;
+    border-left: 1px solid #fe8b88;
+    border-bottom: 1px solid #fe8b88;
+    border-top: 0.1px solid #fe8b88;
+    position: relative; }
+    .frzTable .frzActive + .frzTable-cols {
+      border-left: 1px solid #fe8b88; }
+  .frzTable .frzChange {
+    background-color: #f7f7f7; }
+  .frzTable .frzTable-tr {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .frzTable .frzTable-tr .td:first-child {
+      width: 88px; }
+  .frzTable .frzTable-wrap {
+    width: calc(100% - 88px);
+    overflow: hidden; }
+  .frzTable .frzTable-slider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    -o-transition-property: transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    -webkit-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s; }
+  .frzTable .frzTable-cols {
+    text-align: center; }
+    .frzTable .frzTable-cols.frzTable-col1 {
+      min-width: 100%; }
+      @media (min-width: 768px) {
+        .frzTable .frzTable-cols.frzTable-col1 {
+          min-width: 14.28571%; } }
+    .frzTable .frzTable-cols.frzTable-col2 {
+      min-width: 50%; }
+      @media (min-width: 768px) {
+        .frzTable .frzTable-cols.frzTable-col2 {
+          min-width: 14.28571%; } }
+    .frzTable .frzTable-cols.frzTable-col3 {
+      min-width: 33.33333%; }
+      @media (min-width: 768px) {
+        .frzTable .frzTable-cols.frzTable-col3 {
+          min-width: 14.28571%; } }
+    .frzTable .frzTable-cols.frzTable-col4 {
+      min-width: 25%;
+      line-height: initial;
+      padding-top: 10px; }
+      @media (min-width: 768px) {
+        .frzTable .frzTable-cols.frzTable-col4 {
+          min-width: 14.28571%; } }
+      @media (min-width: 768px) {
+        .frzTable .frzTable-cols.frzTable-col4 {
+          padding-top: 0;
+          line-height: 60px; } }
+  @media (min-width: 768px) {
+    .frzTable .frzTable-arrow {
+      display: none; } }
+  .frzTable .frzTable-arrow div {
+    width: 20px;
+    height: 40px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    line-height: 40px; }
+  .frzTable .frzTable-arrow .frzTable-nextArrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -20px; }
+  .frzTable .frzTable-arrow .frzTable-preArrow {
+    display: none;
+    position: absolute;
+    left: 88px;
+    top: 50%;
+    margin-top: -20px; }
